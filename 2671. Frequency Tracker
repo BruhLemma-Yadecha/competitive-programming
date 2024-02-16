@@ -1,0 +1,71 @@
+class FrequencyTracker(object):
+
+    def __init__(self):
+        self.f = {}
+        self.ff = {}
+
+    def add(self, number):
+        """
+        :type number: int
+        :rtype: None
+        """
+        if number in self.f:
+            old = self.f[number]
+            new = old + 1
+
+            self.subtract_ff(old)
+            self.add_ff(new)
+
+            self.f[number] += 1
+
+        else:
+            self.f[number] = 1
+            self.add_ff(1)
+        
+
+    def deleteOne(self, n):
+        """
+        :type number: int
+        :rtype: None
+        """
+        if n in self.f:
+            old = self.f[n]
+            new = old - 1
+
+            
+            self.subtract_ff(old)
+            if new != 0:
+                self.add_ff(new)
+
+
+            self.f[n] -= 1
+            if self.f[n] == 0:
+                del self.f[n]
+        
+
+    def hasFrequency(self, frequency):
+        """
+        :type frequency: int
+        :rtype: bool
+        """
+        return frequency in self.ff
+
+    def add_ff(self, n):
+        if n in self.ff:
+            self.ff[n] += 1
+        else:
+            self.ff[n] = 1
+
+    def subtract_ff(self, n):
+        if n in self.ff:
+            self.ff[n] -= 1
+            if self.ff[n] == 0:
+                del self.ff[n]
+        
+
+
+# Your FrequencyTracker object will be instantiated and called as such:
+# obj = FrequencyTracker()
+# obj.add(number)
+# obj.deleteOne(number)
+# param_3 = obj.hasFrequency(frequency)
