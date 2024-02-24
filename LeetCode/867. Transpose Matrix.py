@@ -4,13 +4,6 @@ class Solution(object):
         :type img: List[List[int]]
         :rtype: List[List[int]]
         """
-        # a b c
-        # d e f
-        # g h i
-
-        # i-1,j-1  i-1  i-1,j+1
-        # j-1      ---  j + 1
-        # i+1,j-1  i+1  i+1,j+1
 
         n = len(img)
         m = len(img[0])
@@ -24,10 +17,6 @@ class Solution(object):
                     for l in range(j - 1, j + 2):
                         if k < n and l < m:
                             coords.append(img[k][l])
-            img[i][j] = sum(coords) / len(coords)
+                img[i][j] = sum(coords) / len(coords)
         return img
-
-
-
-
 

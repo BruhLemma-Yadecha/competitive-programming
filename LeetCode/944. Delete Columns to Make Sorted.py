@@ -9,4 +9,4 @@ class Solution(object):
         for col in columns:
             if sorted(col) != col:
                 res += 1
-        return res
+        return resz
