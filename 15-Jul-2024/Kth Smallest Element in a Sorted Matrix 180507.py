@@ -1,0 +1,15 @@
+# Problem: Kth Smallest Element in a Sorted Matrix - https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/
+
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        heap = []
+        n = len(matrix)
+        for i in range(n):
+            for j in range(n):
+                heapq.heappush(heap, -matrix[i][j])
+                
+                if len(heap) > k:
+                    heapq.heappop(heap)
+                    
+        
+        return -heapq.nlargest(k, heap)[-1]
